@@ -2,4 +2,4 @@
 Ejercicios del zoomcamp de datatalk 
 
 # Instalar docker  
-r.com/desktop/install/linux-install/
+https://docs.docker.com/desktop/install/linux-install/
