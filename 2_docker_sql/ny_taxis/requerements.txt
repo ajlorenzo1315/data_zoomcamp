@@ -1,0 +1,6 @@
+pgcli
+psycopg
+pyarrow
+fastparquet
+sqlalchemy
+psycopg2
