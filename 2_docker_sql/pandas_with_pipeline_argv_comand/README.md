@@ -96,3 +96,14 @@ ENTRYPOINT ["python","pipelines_copy.py","1"]
 
 </pre>
  
+## solucion 2 
+con el docker file anterior
+<pre>
+
+~/Escritorio/data-engineering-zoomcamp/data_zoomcamp/2_docker_sql/pandas_with_pipeline_argv_comand$ sudo docker run -it test:pandas 1
+['pipelines_copy.py', '1']
+argunmento 1
+
+
+</pre>
+ 

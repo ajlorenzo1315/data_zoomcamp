@@ -9,5 +9,5 @@ WORKDIR /the/workdir/path
 COPY pipelines.py pipelines_copy.py
 
 # lo que quiero es que cuando al lanzar el docker es que realiza un python pipelines_copy.py
-ENTRYPOINT ["python","pipelines_copy.py","1"]
+ENTRYPOINT ["python","pipelines_copy.py"]
 
