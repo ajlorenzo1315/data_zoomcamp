@@ -1,5 +1,6 @@
 # first class
 
+## Probando comandos basicos de una imagen de ubuntu
 <pre>
 $ sudo docker run -it ubuntu bash 
 Unable to find image 'ubuntu:latest' locally
@@ -12,7 +13,7 @@ root@c7f6e7e77a8f:/#
 $ docker run -it ubuntu bash  # significa -it es interativo
 
 </pre>
-
+## Probando comandos basicos de una imagen de python 3.9
 <pre>
 sudo docker run -it python:3.9
 Unable to find image 'python:3.9' locally
@@ -50,7 +51,7 @@ KeyboardInterrupt
 >>> 
 
 </pre>
-
+## Probando comandos basicos de una imagen de python 3.9 que nos permite instalar mas imagenes 
 <pre> 
 sudo docker run -it --entrypoint=bash  python:3.9
 root@5323c6902302:/# pip install pandas
@@ -79,3 +80,4 @@ You should consider upgrading via the '/usr/local/bin/python -m pip install --up
 
 </pre>
 
+[ejecutando_primer_docker_file](#only_pandas)
