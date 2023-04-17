@@ -1,0 +1,12 @@
+FROM python:3.9
+
+# instalar dependecencias
+RUN pip install pandas
+
+# path en el que se trabaja la copia siguiente
+WORKDIR /the/workdir/path
+# script que queresmos copiar y el nombre que le damos en el docker 
+COPY pipelines.py pipelines_copy.py
+
+ENTRYPOINT [ "bash"]
+
