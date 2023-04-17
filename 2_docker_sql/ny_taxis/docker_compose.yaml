@@ -1,0 +1,29 @@
+#Este archivo YAML define dos servicios: 
+#pgdatabase y pgadmin. pgdatabase es un servicio de base de datos PostgreSQL que utiliza la imagen postgres:13. 
+#La sección environment define tres variables de entorno que se utilizan para configurar la base de datos. 
+#La sección volumes especifica un volumen local para almacenar los datos de PostgreSQL y 
+#la sección ports redirige el puerto 5432 del contenedor al puerto 5432 del host.
+
+#pgadmin es un servicio que utiliza la imagen dpage/pgadmin4. 
+#La sección environment define dos variables de entorno que se utilizan para configurar pgAdmin4. 
+#La sección ports redirige el puerto 80 del contenedor al puerto 8080 del host.
+
+services: # Sección de servicios
+  pgdatabase: # Nombre del servicio
+    image: postgres:13 # Imagen a utilizar para el servicio
+    environment: # Variables de entorno del servicio
+      - POSTGRES_USER=root # Usuario de PostgreSQL
+      - POSTGRES_PASSWORD=root # Contraseña de PostgreSQL
+      - POSTGRES_DB=ny_taxi # Nombre de la base de datos de PostgreSQL
+    volumes: # Volúmenes del servicio
+      - "./ny_taxi_postgres_data:/var/lib/postgresql/data:rw" # Montar un volumen local para almacenar los datos de PostgreSQL
+    ports: # Puertos del servicio
+      - "5432:5432" # Redirigir el puerto 5432 del contenedor al puerto 5432 del host
+  pgadmin: # Nombre del servicio
+    image: dpage/pgadmin4 # Imagen a utilizar para el servicio
+    environment: # Variables de entorno del servicio
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com # Correo electrónico del usuario de pgAdmin4
+      - PGADMIN_DEFAULT_PASSWORD=root # Contraseña del usuario de pgAdmin4
+    ports: # Puertos del servicio
+      - "8080:80" # Redirigir el puerto 80 del contenedor al puerto 8080 del host
+

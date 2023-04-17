@@ -1,0 +1,37 @@
+#Este archivo YAML define un servicio de base de datos PostgreSQL llamado postgres. 
+#La sección image especifica que se utilizará la imagen de Docker postgres:13. 
+#La sección environment define tres variables de entorno que se utilizan para configurar la base de datos: 
+#el nombre de usuario (POSTGRES_USER), la contraseña (POSTGRES_PASSWORD) y el nombre de la base de datos (POSTGRES_DB).
+#
+#La sección volumes especifica que se montará un volumen llamado postgres-db-volumen para almacenar los datos de la base de datos. 
+#La sección healthcheck define un comando (pg_isready) que se utiliza para verificar si el servicio está en funcionamiento. 
+#Este comando se ejecutará cada 5 segundos (interval: 5s) y se intentará un máximo de 5 veces (retries: 5) 
+#antes de marcar el servicio como no saludable. Finalmente, la sección restart especifica que 
+#el servicio debe reiniciarse automáticamente en caso de fallo (restart: always).
+
+
+
+services: # Sección de servicios
+  postgres: # Nombre del servicio
+    image: postgres:13 # Imagen a utilizar para el servicio
+    environment: # Variables de entorno del servicio
+      POSTGRES_USER: airflow # Nombre de usuario de la base de datos
+      POSTGRES_PASSWORD: airflow # Contraseña de la base de datos
+      POSTGRES_DB: airflow # Nombre de la base de datos
+    volumes: # Volúmenes del servicio
+      - postgres-db-volumen:/var/lib/postgresql/data # Montar un volumen para almacenar los datos de la base de datos
+    healthcheck: # Configuración de la comprobación de salud
+      test: ["CMD", "pg_isready", "-U", "airflow"] # Comando que se utiliza para verificar si el servicio está en funcionamiento
+      interval: 5s # Intervalo entre comprobaciones de salud
+      retries: 5 # Número de veces que se intentará la comprobación de salud antes de marcar el servicio como no saludable
+    restart: always # Configuración de reinicio del servicio
+
+docker run -it \
+    -e POSTGRES_USER=root \
+    -e POSTGRES_PASSWORD=root \
+    -e POSTGRES_DB="ny_taxi" \
+    -v $(pwd -P)/ny_taxi_progres_data:/var/lib/protgresql/data \
+    -p 5432:5432 \
+    postgres:13
+
+        
