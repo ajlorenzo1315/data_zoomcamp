@@ -69,4 +69,4 @@ For more examples and ideas, visit:
 
 </pre>
 
-[Week 1: Introduction & Prerequisites](#2_docker_sql)
+[Week 1: Introduction & Prerequisites](2_docker_sql)
