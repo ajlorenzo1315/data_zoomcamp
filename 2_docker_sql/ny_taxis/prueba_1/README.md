@@ -19,13 +19,21 @@ Ahora copiamos y pegamso el siguiente comando en terminal
 <pre>
 
 docker run -it \
-    -e POSTGRES_USER=root \
-    -e POSTGRES_PASSWORD=root \
+    -e POSTGRES_USER="root" \
+    -e POSTGRES_PASSWORD="root" \
     -e POSTGRES_DB="ny_taxi" \
     -v $(pwd -P)/ny_taxi_progres_data:/var/lib/protgresql/data \
     -p 5432:5432 \
     postgres:13
 
+
+docker run -it \
+    -e POSTGRES_USER="root" \
+    -e POSTGRES_PASSWORD="root" \
+    -e POSTGRES_DB="ny_taxi" \
+    -v /home/alourido/Escritorio/data-engineering-zoomcamp/data_zoomcamp/2_docker_sql/ny_taxis/prueba_1/ny_taxi_progres_data:/var/lib/protgresql/data \
+    -p 5432:5432 \
+    postgres:13
 
 </pre>
 
@@ -126,7 +134,7 @@ docker run -it postgres:13 \
     -e POSTGRES_USER="nytaxi" \
     -e POSTGRES_PASSWORD="nytaxi" \
     -e POSTGRES_DB="ny_taxi" \
-    -v $(pwd -P)/ny_taxi_progres_data:/var/lib/protgresql/dara \
+    -v $(pwd -P)/ny_taxi_progres_data:/var/lib/protgresql/data \
     -p 5432:5432 \
     postgres:13
 </pre>

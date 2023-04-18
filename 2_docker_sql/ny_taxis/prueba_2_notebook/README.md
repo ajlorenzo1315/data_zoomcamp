@@ -62,5 +62,5 @@ root@localhost:ny_taxi> \d yellow_taxi_data_sql
 
 root@localhost:ny_taxi>
 
-
 </pre>
+

@@ -5,6 +5,65 @@ Ejercicios del zoomcamp de datatalk
 * [siguiendo](https://docs.docker.com/desktop/install/linux-install/)
 * Versión docker-desktop-4.18.0-amd64
 
+## nueva instalación 
+
+### Prerequisitos
+<pre>
+
+sudo apt-get purge docker-ce docker-ce-cli containerd.io
+sudo rm -rf /var/lib/docker
+sudo apt install gnome-terminal
+sudo apt remove docker-desktop
+rm -r $HOME/.docker/desktop
+sudo rm /usr/local/bin/com.docker.cli
+sudo apt purge docker-desktop
+
+</pre>
+
+### intalación  using the apt repository
+
+**Set up the repository**
+
+Update the apt package index and install packages to allow apt to use a repository over HTTPS:
+<pre>
+
+sudo apt-get update
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg
+</pre>
+Add Docker’s official GPG key and set up the repository:
+<pre>
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+
+</pre>
+
+
+Add Docker’s official GPG key and set up the repository:
+<pre>
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+
+</pre>
+
+
 sudo apt-get install ./docker-desktop-4.18.0-amd64.deb
 
 prueba docker run hello-world
@@ -70,3 +129,24 @@ For more examples and ideas, visit:
 </pre>
 
 [Week 1: Introduction & Prerequisites](2_docker_sql)
+
+para parar el docker
+<pre>
+ocker_sql/ny_taxis/prueba_1$ sudo service docker stop
+
+Warning: Stopping docker.service, but it can still be activated by:
+  docker.socket
+
+alourido@GRAD0356UBUNTU:~/Escritorio/data-engineering-zoomcamp/data_zoomcamp/2_docker_sql/ny_taxis/prueba_1$ sudo systemctl disable docker.service
+Synchronizing state of docker.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install disable docker
+
+alourido@GRAD0356UBUNTU:~/Escritorio/data-engineering-zoomcamp/data_zoomcamp/2_docker_sql/ny_taxis/prueba_1$ sudo service docker stop
+Warning: Stopping docker.service, but it can still be activated by:
+  docker.socket
+
+alourido@GRAD0356UBUNTU:~/Escritorio/data-engineering-zoomcamp/data_zoomcamp/2_docker_sql/ny_taxis/prueba_1$ sudo systemctl stop docker.socket
+
+alourido@GRAD0356UBUNTU:~/Escritorio/data-engineering-zoomcamp/data_zoomcamp/2_docker_sql/ny_taxis/prueba_1$ sudo service docker stop
+
+</pre>
